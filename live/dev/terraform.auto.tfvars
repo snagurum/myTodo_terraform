@@ -1,5 +1,8 @@
-project         = "mytodo-poc"
-env             = "dev"
-region          = "ap-south-1"
+aws_profile = "me"
+project     = "mytodo-poc"
+env         = "dev"
+region      = "ap-south-1"
 
 
+todo_url      = "snagurum.in"
+todo_alt_urls = ["snagurum.in", "www.snagurum.in"]
