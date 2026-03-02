@@ -79,10 +79,21 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
 
-  viewer_certificate {
+  dynamic "viewer_certificate" {
+    for_each = var.domain_name_cert_arn != "" ? [1] : []
+    content {
+      acm_certificate_arn      = var.domain_name_cert_arn
+      ssl_support_method       = "sni-only"
+      minimum_protocol_version = "TLSv1.2_2021"
+    }
+  }
+
+  dynamic "viewer_certificate" {
+    for_each = var.domain_name_cert_arn == "" ? [1] : []
+    content {
       cloudfront_default_certificate = true
     }
-
+  }
 
   aliases = [
     "${var.bucket_name}",
