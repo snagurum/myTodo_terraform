@@ -44,6 +44,8 @@ resource "aws_route53_record" "www" {
     }
 }
 
-
-
+module "ecr" {
+  source    = "../../modules/core/ecr"
+  name      = var.todo_ecr_name
+}
 

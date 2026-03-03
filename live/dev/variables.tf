@@ -15,3 +15,5 @@ variable "todo_alt_urls" {
 }
 
 
+variable "todo_ecr_name" {}
+
