@@ -9,3 +9,8 @@ variable "domain_name" {
 variable "alt_domain_names" {
   type = list(string)
 }
+
+variable "use_hosted_zone" {
+  type    = bool
+  default = false
+}

@@ -28,3 +28,13 @@ resource "aws_acm_certificate_validation" "this" {
   ]
 }
 
+module "hosted_zone_validation" {
+  source                    = "./hosted_zone"
+  count                     = var.use_hosted_zone ? 1 : 0
+  domain_name               = var.domain_name
+  domain_validation_options = aws_acm_certificate.this.domain_validation_options
+  certificate_arn           = aws_acm_certificate.this.arn
+  providers = {
+    aws = aws.use1
+  }
+}

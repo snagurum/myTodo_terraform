@@ -6,8 +6,12 @@ variable "env" {}
 
 variable "region" {}
 
+
+
 variable "todo_url" {}
 
 variable "todo_alt_urls" {
   type = list(string)
 }
+
+
