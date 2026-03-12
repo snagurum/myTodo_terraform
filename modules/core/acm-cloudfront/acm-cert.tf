@@ -9,6 +9,7 @@
 
 
 resource "aws_acm_certificate" "this" {
+  provider                  = aws.use1
   domain_name               = var.domain_name
   validation_method         = "DNS"
   subject_alternative_names = var.alt_domain_names
@@ -18,6 +19,7 @@ resource "aws_acm_certificate" "this" {
 }
 
 resource "aws_acm_certificate_validation" "this" {
+  provider        = aws.use1
   count           = !var.use_hosted_zone ? 1 : 0
   certificate_arn = aws_acm_certificate.this.arn
   validation_record_fqdns = [
@@ -33,4 +35,7 @@ module "hosted_zone_validation" {
   hosted_zone_name          = var.hosted_zone_name == null ? var.domain_name : var.hosted_zone_name
   domain_validation_options = aws_acm_certificate.this.domain_validation_options
   certificate_arn           = aws_acm_certificate.this.arn
+  providers = {
+    aws = aws.use1
+  }
 }

@@ -1,4 +1,11 @@
-
+terraform {
+  required_providers {
+    aws = {
+      source                = "hashicorp/aws"
+      configuration_aliases = [aws]
+    }
+  }
+}
 
 data "aws_route53_zone" "this" {
   name         = var.hosted_zone_name
@@ -16,6 +23,7 @@ resource "aws_route53_record" "this" {
   type    = each.value.resource_record_type
   records = [each.value.resource_record_value]
   ttl     = 60
+  allow_overwrite = true
 }
 
 resource "aws_acm_certificate_validation" "validation" {
