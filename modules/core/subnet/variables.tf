@@ -55,3 +55,8 @@ variable "public_subnet_ids" {
   type    = list(string)
   default = null
 }
+
+variable "ni_key-pair_name" {
+  type    = string
+  default = "admin-key"
+}

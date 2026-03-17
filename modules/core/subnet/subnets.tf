@@ -65,6 +65,6 @@ module "nat_instance" {
     tolist(aws_subnet.this[*].id)
   )
   public_subnet_ids = var.public_subnet_ids
-  key_pair_name     = "admin-key"
+  key_pair_name     = var.ni_key-pair_name
   instance_type     = "t3.nano"
 }
