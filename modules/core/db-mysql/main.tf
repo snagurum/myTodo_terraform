@@ -1,5 +1,5 @@
 resource "aws_db_instance" "my_mysql_db" {
-  allocated_storage      = 20
+  allocated_storage      = var.storage
   engine                 = var.db_engine
   engine_version         = var.mysql_engine_version
   instance_class         = var.db_instance_class

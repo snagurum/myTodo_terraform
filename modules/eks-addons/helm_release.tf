@@ -51,6 +51,7 @@ resource "helm_release" "argocd" {
   chart            = "argo-cd"
   namespace        = "argocd"
   create_namespace = true
+  version          = "9.4.12"
   depends_on       = [time_sleep.wait_for_lbc]
 }
 
