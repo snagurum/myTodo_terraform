@@ -31,6 +31,6 @@ variable "public_subnets_cidr" {}
 
 variable "private_subnets_cidr" {}
 
-variable "create_nat_instance" {}
+variable "create_nat_gateway" {}
 
 variable "github_repos_url" {}

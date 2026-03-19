@@ -25,7 +25,7 @@ module "mysql-db" {
   db_name               = var.project
   db_subnet_group_ids   = module.vpc-full.private_subnet_ids
   db_username           = "root"
-  db_password           = aws_ssm_parameter.db_pwd.value_wo
+  db_password           = aws_ssm_parameter.db_pwd.value
   db_security_group_ids = [module.db-sg.id]
   skip_final_snapshot   = true
   deletion_protection   = false
