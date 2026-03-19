@@ -26,3 +26,13 @@ module "eks-secrets-provider" {
   depends_on           = [module.eks, module.eks-addons]
   sa_prefix            = "mytodo-prod"
 }
+
+module "s3_access" {
+  source                    = "../../modules/eks-pod-access"
+  eks_cluster_name          = module.eks.cluster_name
+  eks_sa_name               = "s3-full-object-access-sa-name"
+  eks_namespace             = "${var.env}-${var.project}"
+  s3_bucket_name            = "mytodo-poc-terraform-state"
+  identity_access_role_name = "s3_full_object_access"
+  depends_on                = [module.eks, module.eks-secrets-provider]
+}
