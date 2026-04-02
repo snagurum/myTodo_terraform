@@ -34,3 +34,5 @@ variable "private_subnets_cidr" {}
 variable "create_nat_instance" {}
 
 variable "github_repos_url" {}
+
+variable "cluster_version" {}

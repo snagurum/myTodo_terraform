@@ -20,3 +20,4 @@ create_nat_instance  = true
 
 github_repos_url = ["repo:snagurum/myTodo_fe:*", "repo:snagurum/myTodo_be:*"]
 
+cluster_version="1.30"

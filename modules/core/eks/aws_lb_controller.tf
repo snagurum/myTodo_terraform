@@ -42,7 +42,7 @@ resource "aws_iam_role" "aws_load_balancer_controller" {
 }
 
 resource "aws_iam_policy" "aws_load_balancer_controller" {
-  name        = "AWSLoadBalancerControllerIAMPolicy"
+  name        = "${var.cluster_name}-AWSLoadBalancerControllerIAMPolicy"
   description = "IAM policy for AWS Load Balancer Controller"
   policy      = file("${path.module}/aws_lb_controller_iam_policy.json")
 }
