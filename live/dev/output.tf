@@ -18,3 +18,7 @@ output "ecr_repository_url" {
 output "cicd_role_arn" {
   value = module.github-oidc-role.role_arn
 }
+
+output "eks_cluster_name" {
+  value = module.eks.cluster_name
+}

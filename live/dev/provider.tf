@@ -3,9 +3,8 @@ terraform {
     bucket = "mytodo-poc-terraform-state"
     key    = "dev-mytodo"
     region = "ap-south-1"
-    # dynamodb_table = "your-dynamodb-table-name"
-    # encrypt        = true
     profile = "me"
+    use_lockfile = true
   }
 
   required_providers {
