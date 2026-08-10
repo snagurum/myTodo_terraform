@@ -33,6 +33,9 @@ resource "helm_release" "aws_load_balancer_controller" {
     }, {
     name  = "listenPorts[1].HTTPS"
     value = "443"
+    },{
+      name  = "featureGates.EnableCertificateManagement"
+      value = "true"
     }
   ]
   depends_on = [kubernetes_service_account_v1.aws_lbc]

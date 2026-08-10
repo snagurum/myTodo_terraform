@@ -5,7 +5,8 @@ resource "aws_eks_node_group" "default" {
   subnet_ids      = var.subnet_ids
 
   instance_types = var.node_group_instance_types
-
+  ami_type = "AL2023_x86_64_STANDARD"
+  
   scaling_config {
     desired_size = var.node_group_desired_size
     max_size     = var.node_group_max_size
