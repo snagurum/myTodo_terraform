@@ -3,6 +3,11 @@ variable "db_identifier" {
   type = string
 }
 
+variable "db_storage" {
+  type    = number
+  default = 20
+}
+
 variable "db_engine" {
   type    = string
   default = "mysql"
@@ -32,7 +37,17 @@ variable "db_password" {
   sensitive = true
 }
 
-variable "skip_final_snapshot" {
+variable "db_skip_final_snapshot" {
+  type    = bool
+  default = false
+}
+
+variable "db_deletion_protection" {
+  type    = bool
+  default = true
+}
+
+variable "db_multi_az" {
   type    = bool
   default = false
 }
@@ -45,18 +60,32 @@ variable "db_security_group_ids" {
   type = list(string)
 }
 
-variable "publicly_accessible" {
+variable "db_publicly_accessible" {
   type    = bool
   default = false
 }
 
-variable "deletion_protection" {
+variable "db_multi_az" {
   type    = bool
-  default = true
+  default = false
 }
 
-variable "storage" {
+variable "db_backup_retention_period" {
   type    = number
-  default = 20
+  default = 7
 }
 
+variable "db_maintenance_window" {
+  type    = string
+  default = "Sun:04:30-Sun:05:30"
+}
+
+variable "db_max_storage" {
+  type    = number
+  default = 1000
+}
+
+variable "db_backup_window" {
+  type    = string
+  default = "03:00-04:00"
+}

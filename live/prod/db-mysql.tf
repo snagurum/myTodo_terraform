@@ -20,15 +20,20 @@ resource "aws_ssm_parameter" "db_pwd" {
 }
 
 module "mysql-db" {
-  source                = "../../modules/core/db-mysql"
-  db_identifier         = "${var.env}-${var.project}"
-  db_name               = var.project
-  db_subnet_group_ids   = module.vpc-full.private_subnet_ids
-  db_username           = "root"
-  db_password           = aws_ssm_parameter.db_pwd.value
-  db_security_group_ids = [module.db-sg.id]
-  skip_final_snapshot   = true
-  deletion_protection   = false
+  source                     = "../../modules/core/db-mysql"
+  db_identifier              = "${var.env}-${var.project}"
+  db_name                    = var.project
+  db_storage                 = var.db_storage
+  db_subnet_group_ids        = module.vpc-full.private_subnet_ids
+  db_username                = "root"
+  db_password                = aws_ssm_parameter.db_pwd.value
+  db_security_group_ids      = [module.db-sg.id]
+  db_skip_final_snapshot     = var.db_skip_final_snapshot
+  db_deletion_protection     = var.db_deletion_protection
+  db_multi_az                = var.db_multi_az
+  db_backup_retention_period = var.db_backup_retention_period
+  db_backup_window           = var.db_backup_window
+  db_maintenance_window      = var.db_maintenance_window
 }
 
 module "db-sg" {

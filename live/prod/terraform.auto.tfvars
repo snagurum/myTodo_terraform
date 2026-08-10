@@ -22,3 +22,10 @@ github_repos_url = ["repo:snagurum/myTodo_fe:*", "repo:snagurum/myTodo_be:*"]
 
 
 cluster_version = "1.30"
+
+db_multi_az            = true
+db_deletion_protection = false
+db_backup_window       = "21:30-22:30"
+db_maintenance_window  = "Sat:23:00-Sat:24:00"
+db_storage             = 20
+db_skip_final_snapshot = true

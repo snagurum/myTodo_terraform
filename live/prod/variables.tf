@@ -36,3 +36,11 @@ variable "create_nat_gateway" {}
 variable "github_repos_url" {}
 
 variable "cluster_version" {}
+
+variable "db_storage" {}
+variable "db_skip_final_snapshot" {}
+variable "db_deletion_protection" {}
+variable "db_multi_az" {}
+variable "db_backup_retention_period" {}
+variable "db_backup_window" {}
+variable "db_maintenance_window" {}
