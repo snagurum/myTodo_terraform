@@ -65,11 +65,6 @@ variable "db_publicly_accessible" {
   default = false
 }
 
-variable "db_multi_az" {
-  type    = bool
-  default = false
-}
-
 variable "db_backup_retention_period" {
   type    = number
   default = 7

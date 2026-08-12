@@ -6,7 +6,7 @@ module "eks" {
   subnet_ids              = module.vpc-full.private_subnet_ids
   node_group_desired_size = 3
   node_group_min_size     = 2
-  node_group_max_size     = 4
+  node_group_max_size     = 5
   cluster_version = var.cluster_version
 }
 
