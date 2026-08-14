@@ -34,11 +34,13 @@ module "mysql-db" {
   db_backup_retention_period = var.db_backup_retention_period
   db_backup_window           = var.db_backup_window
   db_maintenance_window      = var.db_maintenance_window
+  db_storage_encrypted       = true
 }
 
 module "db-sg" {
   source = "../../modules/core/sg"
   vpc_id = module.vpc-full.vpc_id
+  name   = "${var.env}-${var.project}-db"
   ingress_rules = [{
     port        = 3306
     protocol    = "tcp"

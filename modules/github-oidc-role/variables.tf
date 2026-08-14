@@ -9,3 +9,6 @@ variable "branch" {
 }
 variable "s3_bucket" {}
 variable "oidc_provider_arn" {}
+variable "ecr_arns" {
+  type = list(string)
+}

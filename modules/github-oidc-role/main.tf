@@ -75,7 +75,7 @@ data "aws_iam_policy_document" "deploy_policy" {
       "ecr:UploadLayerPart",
       "ecr:CompleteLayerUpload"
     ]
-    resources = ["*"]
+    resources = var.ecr_arns
   }
 }
 
