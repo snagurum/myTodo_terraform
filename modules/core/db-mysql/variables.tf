@@ -84,3 +84,8 @@ variable "db_backup_window" {
   type    = string
   default = "03:00-04:00"
 }
+
+variable "db_storage_encrypted" {
+  type    = bool
+  default = true
+}

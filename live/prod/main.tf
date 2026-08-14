@@ -48,6 +48,8 @@ resource "aws_route53_record" "www" {
 module "ecr" {
   source = "../../modules/core/ecr"
   name   = var.todo_ecr_name
+  image_tag_mutability = "MUTABLE"
+
 }
 
 module "github-oidc-role" {
@@ -56,5 +58,6 @@ module "github-oidc-role" {
   oidc_provider_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/token.actions.githubusercontent.com"
   github_repos      = var.github_repos_url
   s3_bucket         = var.todo_url
+  ecr_arns          = [ "arn:aws:ecr:${var.region}:${data.aws_caller_identity.current.account_id}:repository/${var.todo_ecr_name}" ]
   project           = var.project
 }

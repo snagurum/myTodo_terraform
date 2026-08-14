@@ -1,3 +1,11 @@
+module "db-kms" {
+  count       = var.db_storage_encrypted ? 1 : 0
+  source      = "../kms"
+  name        = "${var.db_name}-db-kms-key"
+  alias_name  = "${var.db_name}-db-kms-key"
+  description = "KMS key for encrypting database"
+}
+
 resource "aws_db_instance" "my_mysql_db" {
   allocated_storage         = var.db_storage
   engine                    = var.db_engine
@@ -18,6 +26,8 @@ resource "aws_db_instance" "my_mysql_db" {
   maintenance_window        = var.db_maintenance_window
   final_snapshot_identifier = "${var.db_identifier}-final-snapshot"
   max_allocated_storage     = var.db_max_storage
+  storage_encrypted         = var.db_storage_encrypted
+  kms_key_id                = var.db_storage_encrypted ? module.db-kms[0].key_arn : null
 }
 
 resource "aws_db_subnet_group" "this" {
