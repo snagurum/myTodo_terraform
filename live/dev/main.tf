@@ -61,7 +61,7 @@ module "github-oidc-role" {
   oidc_provider_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/token.actions.githubusercontent.com"
   github_repos      = var.github_repos_url
   s3_bucket         = var.todo_url
-  ecr_arns          = ["arn:aws:${var.region}:${data.aws_caller_identity.current.account_id}:repository/${var.todo_ecr_name}"]
+  ecr_arns          = ["arn:aws:ecr:${var.region}:${data.aws_caller_identity.current.account_id}:repository/${var.todo_ecr_name}"]
   project           = var.project
 }
 
